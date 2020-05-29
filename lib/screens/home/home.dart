@@ -51,7 +51,7 @@ class Home extends StatelessWidget {
               },
               icon: Icon(
                 SettingsIcon.cog_outline,
-                size: 18,
+                size: 20,
               ),
             )
           ],
