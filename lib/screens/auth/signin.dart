@@ -16,6 +16,9 @@ class _SignInState extends State<SignIn> {
   // Validation of Form:
   final _formKey = GlobalKey<FormState>();
 
+  // GlobalKey:
+  GlobalKey _scaffold = GlobalKey();
+
   // Fields values:
   String email = '';
   String password = '';
@@ -23,10 +26,12 @@ class _SignInState extends State<SignIn> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: _scaffold,
       resizeToAvoidBottomPadding: false,
       backgroundColor: Colors.brown[400],
       appBar: AppBar(
         backgroundColor: Colors.brown[400],
+        brightness: Brightness.dark,
         elevation: 0.0,
         centerTitle: true,
         title: Text('Sign In to Brew Crew'),
@@ -35,7 +40,7 @@ class _SignInState extends State<SignIn> {
         onTap: () => FocusScope.of(context).unfocus(),
         child: Container(
           decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(15),
+            borderRadius: BorderRadius.circular(20),
             image: DecorationImage(
               image: AssetImage('assets/coffee_bg.png'),
               fit: BoxFit.cover,
@@ -127,11 +132,11 @@ class _SignInState extends State<SignIn> {
                       ),
                       onPressed: () async {
                         if (_formKey.currentState.validate()) {
-                          loadingDialog(context);
+                          loadingDialog(_scaffold.currentContext);
                           dynamic result =
                               await _auth.signInWithEmailAndPassword(
                                   email.trim(), password);
-                          Navigator.pop(context);
+                          Navigator.of(_scaffold.currentContext).pop();
                           if (result == null) {
                             errorDialog(
                                 context, 'Incorrect email address or password');

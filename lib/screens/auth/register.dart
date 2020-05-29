@@ -1,7 +1,6 @@
 import 'package:brew_crew/services/authservice.dart';
 import 'package:flutter/material.dart';
 import 'package:brew_crew/utils/dialogs.dart';
-
 import '../wrapper.dart';
 
 class Register extends StatefulWidget {
@@ -27,6 +26,7 @@ class _RegisterState extends State<Register> {
       backgroundColor: Colors.brown[400],
       appBar: AppBar(
         backgroundColor: Colors.brown[400],
+        brightness: Brightness.dark,
         elevation: 0.0,
         title: Text('Sign up in Brew Crew'),
       ),
@@ -34,7 +34,7 @@ class _RegisterState extends State<Register> {
         onTap: () => FocusScope.of(context).unfocus(),
         child: Container(
           decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(15),
+            borderRadius: BorderRadius.circular(20),
             image: DecorationImage(
               image: AssetImage('assets/coffee_bg.png'),
               fit: BoxFit.cover,
