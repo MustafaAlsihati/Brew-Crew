@@ -31,7 +31,12 @@ class BrewTile extends StatelessWidget {
           ),
           title: Text(brew.name),
           subtitle: Text('Takes ${brew.sugars} sugar(s)'),
-          onTap: () => TileDialog(brew),
+          onTap: () => showDialog(
+              context: context,
+              barrierDismissible: true,
+              builder: (BuildContext context) {
+                return TileDialog(brew);
+              }),
         ),
       ),
     );
