@@ -17,7 +17,7 @@ class _SignInState extends State<SignIn> {
   final _formKey = GlobalKey<FormState>();
 
   // GlobalKey:
-  GlobalKey _scaffold = GlobalKey();
+  final GlobalKey _scaffold = GlobalKey();
 
   // Fields values:
   String email = '';

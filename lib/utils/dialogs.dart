@@ -7,7 +7,7 @@ void loadingDialog(BuildContext context) {
   showDialog(
       context: context,
       barrierDismissible: false,
-      builder: (BuildContext context) {
+      builder: (context) {
         return LoadingDialog();
       });
 }
