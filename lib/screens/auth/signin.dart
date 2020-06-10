@@ -43,7 +43,7 @@ class _SignInState extends State<SignIn> {
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(20),
             image: DecorationImage(
-              image: AssetImage('assets/coffee_bg.jpg'),
+              image: AssetImage('assets/coffee_bg.png'),
               fit: BoxFit.cover,
               colorFilter: ColorFilter.mode(
                   Colors.black.withOpacity(0.8), BlendMode.dstATop),

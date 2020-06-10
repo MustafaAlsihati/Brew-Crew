@@ -49,7 +49,7 @@ flutter:
   assets:
     - assets/success.png
     - assets/error.png
-    - assets/coffee_bg.jpg
+    - assets/coffee_bg.png
     - assets/coffee_icon.png
     - lang/en.json
     - lang/ar.json
