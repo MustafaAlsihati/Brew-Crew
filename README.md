@@ -1,4 +1,4 @@
-# brew_crew
+# Coffee_crew
 
-This application is inspired by TheNetNinja on Youtube.
+This application is inspired by tutorial videos on Youtube.
 i added more to the application for practice.
