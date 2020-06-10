@@ -8,9 +8,38 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:541018926253:android:b3b8a39faf63f3c9f56a24",
+        "mobilesdk_app_id": "1:541018926253:android:2de949fca2581e4ef56a24",
         "android_client_info": {
           "package_name": "com.mustafa.brew_crew"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "541018926253-s3ggkm20kj38bssvv22qb2np0c2l33s6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBN-554Q4_lSQZmBQVz8oc8PmBuft82P5s"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "541018926253-s3ggkm20kj38bssvv22qb2np0c2l33s6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:541018926253:android:cc175c88b30b09c4f56a24",
+        "android_client_info": {
+          "package_name": "com.mustafa.coffee_crew"
         }
       },
       "oauth_client": [
