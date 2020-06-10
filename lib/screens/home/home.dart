@@ -1,4 +1,5 @@
 import 'package:brew_crew/icons/settings_icon_icons.dart';
+import 'package:brew_crew/locale/app_localization.dart';
 import 'package:brew_crew/models/brew.dart';
 import 'package:brew_crew/screens/home/settings_form.dart';
 import 'package:flutter/material.dart';
@@ -40,7 +41,7 @@ class Home extends StatelessWidget {
       child: Scaffold(
         backgroundColor: Colors.brown[400],
         appBar: AppBar(
-          title: Text('Brew Crew'),
+          title: Text(AppLocalizations.of(context).text('title')),
           centerTitle: true,
           backgroundColor: Colors.brown[400],
           elevation: 0.0,

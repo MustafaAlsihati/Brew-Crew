@@ -20,7 +20,8 @@ class MyApp extends StatelessWidget {
     return StreamProvider<User>.value(
       value: AuthService().user,
       child: MaterialApp(
-        title: 'Coffee Crew',
+        onGenerateTitle: (context) =>
+            AppLocalizations.of(context).text('title'),
         debugShowCheckedModeBanner: false,
         supportedLocales: [
           Locale('en'),

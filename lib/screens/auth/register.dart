@@ -1,3 +1,4 @@
+import 'package:brew_crew/locale/app_localization.dart';
 import 'package:brew_crew/services/authservice.dart';
 import 'package:flutter/material.dart';
 import 'package:brew_crew/utils/dialogs.dart';
@@ -18,6 +19,7 @@ class _RegisterState extends State<Register> {
   // Fields values:
   String email = '';
   String password = '';
+  String username = '';
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +30,7 @@ class _RegisterState extends State<Register> {
         backgroundColor: Colors.brown[400],
         brightness: Brightness.dark,
         elevation: 0.0,
-        title: Text('Sign up in Brew Crew'),
+        title: Text(AppLocalizations.of(context).text('signUpTitle')),
       ),
       body: GestureDetector(
         onTap: () => FocusScope.of(context).unfocus(),
@@ -56,12 +58,40 @@ class _RegisterState extends State<Register> {
                 children: <Widget>[
                   SizedBox(height: 20.0),
                   TextFormField(
+                    validator: (val) => val.length == 0
+                        ? AppLocalizations.of(context).text('validUserNameMsg')
+                        : null,
+                    decoration: InputDecoration(
+                        border: new OutlineInputBorder(
+                          borderSide: new BorderSide(color: Colors.brown),
+                        ),
+                        hintText:
+                            AppLocalizations.of(context).text('userNameHint'),
+                        helperText: '',
+                        labelText:
+                            AppLocalizations.of(context).text('userNameHint'),
+                        prefixIcon: const Icon(
+                          Icons.person,
+                          color: Colors.brown,
+                        ),
+                        prefixText: '',
+                        suffixText: '',
+                        suffixStyle: const TextStyle(color: Colors.black)),
+                    onChanged: (val) {
+                      setState(() {
+                        username = val;
+                      });
+                    },
+                  ),
+                  SizedBox(height: 5.0),
+                  TextFormField(
                     validator: (val) {
                       bool emailValid = RegExp(
                               r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
                           .hasMatch(val);
                       if (emailValid == false) {
-                        return 'Please enter a valid email address';
+                        return AppLocalizations.of(context)
+                            .text('validEmailMsg');
                       }
                       return null;
                     },
@@ -69,11 +99,13 @@ class _RegisterState extends State<Register> {
                         border: new OutlineInputBorder(
                           borderSide: new BorderSide(color: Colors.brown),
                         ),
-                        hintText: 'Email Address',
+                        hintText:
+                            AppLocalizations.of(context).text('emailHint'),
                         helperText: '',
-                        labelText: 'Email Address',
+                        labelText:
+                            AppLocalizations.of(context).text('emailHint'),
                         prefixIcon: const Icon(
-                          Icons.person,
+                          Icons.email,
                           color: Colors.brown,
                         ),
                         prefixText: '',
@@ -88,15 +120,17 @@ class _RegisterState extends State<Register> {
                   SizedBox(height: 5.0),
                   TextFormField(
                     validator: (val) => val.length < 6
-                        ? 'Please enter a password 6+ chars long'
+                        ? AppLocalizations.of(context).text('validPasswordMsg')
                         : null,
                     decoration: InputDecoration(
                         border: new OutlineInputBorder(
                           borderSide: new BorderSide(color: Colors.brown),
                         ),
-                        hintText: 'Password',
+                        hintText:
+                            AppLocalizations.of(context).text('passwordHint'),
                         helperText: '',
-                        labelText: 'Password',
+                        labelText:
+                            AppLocalizations.of(context).text('passwordHint'),
                         prefixIcon: const Icon(
                           Icons.vpn_key,
                           color: Colors.brown,
@@ -121,7 +155,7 @@ class _RegisterState extends State<Register> {
                       ),
                       color: Colors.brown,
                       child: Text(
-                        'Register',
+                        AppLocalizations.of(context).text('register'),
                         style: TextStyle(
                           color: Colors.white,
                         ),
@@ -131,11 +165,13 @@ class _RegisterState extends State<Register> {
                           loadingDialog(context);
                           dynamic result =
                               await _auth.registerWithEmailAndPassword(
-                                  email.trim(), password);
+                                  email.trim(), password, username.trim());
                           if (result == null) {
                             Navigator.pop(context);
-                            errorDialog(context,
-                                'Error occured, user may already exists');
+                            errorDialog(
+                                context,
+                                AppLocalizations.of(context)
+                                    .text('errorRegister'));
                           } else {
                             Navigator.pushAndRemoveUntil(
                               context,
@@ -143,7 +179,10 @@ class _RegisterState extends State<Register> {
                                   builder: (context) => Wrapper()),
                               (Route<dynamic> route) => false,
                             );
-                            successDialog(context, 'Registered Successfully');
+                            successDialog(
+                                context,
+                                AppLocalizations.of(context)
+                                    .text('registerSuccess'));
                           }
                         }
                       },

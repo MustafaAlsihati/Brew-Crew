@@ -1,3 +1,4 @@
+import 'package:brew_crew/locale/app_localization.dart';
 import 'package:brew_crew/models/brew.dart';
 import 'package:brew_crew/widgets/brewtile_dialog.dart';
 import 'package:flutter/material.dart';
@@ -11,6 +12,7 @@ class BrewTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    String sugarIntake = AppLocalizations.of(context).text('sugarIntake');
     return Padding(
       padding: EdgeInsets.only(top: 8.0),
       child: Card(
@@ -30,7 +32,7 @@ class BrewTile extends StatelessWidget {
                 brew.strength], // Color is based on strength of the user brew.
           ),
           title: Text(brew.name),
-          subtitle: Text('Sugar(s) intakes: ${brew.sugars}'),
+          subtitle: Text('$sugarIntake: ${brew.sugars}'),
           onTap: () => showDialog(
               context: context,
               barrierDismissible: true,

@@ -17,9 +17,6 @@ class _SignInState extends State<SignIn> {
   // Validation of Form:
   final _formKey = GlobalKey<FormState>();
 
-  // GlobalKey:
-  final GlobalKey<ScaffoldState> _scaffold = GlobalKey<ScaffoldState>();
-
   // Fields values:
   String email = '';
   String password = '';
@@ -27,7 +24,6 @@ class _SignInState extends State<SignIn> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      key: _scaffold,
       resizeToAvoidBottomPadding: false,
       backgroundColor: Colors.brown[400],
       appBar: AppBar(
@@ -137,12 +133,14 @@ class _SignInState extends State<SignIn> {
                         ),
                       ),
                       onPressed: () async {
+                        debugPrint('email: $email');
+                        debugPrint('password: $password');
                         if (_formKey.currentState.validate()) {
-                          loadingDialog(_scaffold.currentContext);
+                          loadingDialog(context);
                           dynamic result =
                               await _auth.signInWithEmailAndPassword(
                                   email.trim(), password);
-                          Navigator.of(_scaffold.currentContext).pop();
+                          Navigator.of(context).pop();
                           if (result == null) {
                             errorDialog(
                                 context,

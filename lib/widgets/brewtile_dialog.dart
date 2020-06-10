@@ -1,3 +1,4 @@
+import 'package:brew_crew/locale/app_localization.dart';
 import 'package:brew_crew/models/brew.dart';
 import 'package:flutter/material.dart';
 
@@ -7,6 +8,8 @@ class TileDialog extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    String coffeeStrength = AppLocalizations.of(context).text('coffeeStrength');
+    String sugarIntake = AppLocalizations.of(context).text('sugarIntake');
     return Dialog(
       backgroundColor: Colors.transparent,
       child: Container(
@@ -41,13 +44,13 @@ class TileDialog extends StatelessWidget {
               ),
               SizedBox(height: 20),
               Text(
-                "Coffee strength: ${brew.strength}",
+                "$coffeeStrength: ${brew.strength}",
                 textAlign: TextAlign.center,
                 style: TextStyle(color: Colors.grey[700]),
               ),
               SizedBox(height: 10),
               Text(
-                "Takes ${brew.sugars} sugar(s)",
+                '$sugarIntake: ${brew.sugars}',
                 textAlign: TextAlign.center,
                 style: TextStyle(
                     color: Colors.grey[700], fontStyle: FontStyle.italic),

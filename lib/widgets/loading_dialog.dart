@@ -1,3 +1,4 @@
+import 'package:brew_crew/locale/app_localization.dart';
 import 'package:flutter/material.dart';
 
 class LoadingDialog extends StatelessWidget {
@@ -20,7 +21,7 @@ class LoadingDialog extends StatelessWidget {
               ),
               SizedBox(height: 10),
               Text(
-                "Loading",
+                AppLocalizations.of(context).text('loading'),
                 textAlign: TextAlign.center,
                 style: TextStyle(fontSize: 20),
               ),

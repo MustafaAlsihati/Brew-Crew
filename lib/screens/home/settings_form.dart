@@ -1,3 +1,4 @@
+import 'package:brew_crew/locale/app_localization.dart';
 import 'package:brew_crew/models/user.dart';
 import 'package:brew_crew/services/authservice.dart';
 import 'package:brew_crew/services/database.dart';
@@ -24,6 +25,7 @@ class _SettingsFormState extends State<SettingsForm> {
 
   @override
   Widget build(BuildContext context) {
+    String sugarText = AppLocalizations.of(context).text('sugar');
     final user = Provider.of<User>(context);
     try {
       if (user.uid != null) {
@@ -55,7 +57,7 @@ class _SettingsFormState extends State<SettingsForm> {
                     child: Align(
                       alignment: Alignment.topLeft,
                       child: Text(
-                        'Update brew settings',
+                        AppLocalizations.of(context).text('updateSettings'),
                         style: TextStyle(
                             fontSize: 13.0,
                             color: Colors.grey[600],
@@ -74,10 +76,14 @@ class _SettingsFormState extends State<SettingsForm> {
                             height: 40,
                             child: TextFormField(
                               initialValue: _currentName ?? userData.name,
-                              decoration: brewNameTextInputDecoration,
+                              decoration: brewNameTextInputDecoration(
+                                  AppLocalizations.of(context)
+                                      .text('userNameHint')),
                               style: TextStyle(fontSize: 17.0),
-                              validator: (val) =>
-                                  val.isEmpty ? 'Please enter a name' : null,
+                              validator: (val) => val.isEmpty
+                                  ? AppLocalizations.of(context)
+                                      .text('validUserNameMsg')
+                                  : null,
                               onChanged: (val) =>
                                   setState(() => _currentName = val),
                             ),
@@ -96,7 +102,7 @@ class _SettingsFormState extends State<SettingsForm> {
                               items: sugars.map((sugar) {
                                 return DropdownMenuItem(
                                   value: sugar,
-                                  child: Text('$sugar sugars'),
+                                  child: Text('$sugar $sugarText'),
                                 );
                               }).toList(),
                             ),
@@ -111,7 +117,7 @@ class _SettingsFormState extends State<SettingsForm> {
                             ),
                             color: Colors.brown[400],
                             child: Text(
-                              'Update',
+                              AppLocalizations.of(context).text('updateBtn'),
                               style: TextStyle(color: Colors.white),
                             ),
                             onPressed: () async {
@@ -137,7 +143,7 @@ class _SettingsFormState extends State<SettingsForm> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: <Widget>[
                         Text(
-                          'Brew strength',
+                          AppLocalizations.of(context).text('coffeeStrength'),
                           style: TextStyle(
                               fontSize: 13.0,
                               color: Colors.grey[600],
@@ -175,7 +181,7 @@ class _SettingsFormState extends State<SettingsForm> {
                     ),
                   ),
                   ListTile(
-                    title: Text('Logout'),
+                    title: Text(AppLocalizations.of(context).text('logout')),
                     leading: Icon(Icons.exit_to_app),
                     onTap: () async {
                       await _auth.signOut();
@@ -201,7 +207,7 @@ class _SettingsFormState extends State<SettingsForm> {
                   ),
                 ),
                 ListTile(
-                  title: Text('Logout'),
+                  title: Text(AppLocalizations.of(context).text('logout')),
                   leading: Icon(Icons.exit_to_app),
                   onTap: () async {
                     await _auth.signOut();
