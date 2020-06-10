@@ -30,7 +30,7 @@ class BrewTile extends StatelessWidget {
                 brew.strength], // Color is based on strength of the user brew.
           ),
           title: Text(brew.name),
-          subtitle: Text('Takes ${brew.sugars} sugar(s)'),
+          subtitle: Text('Sugar(s) intakes: ${brew.sugars}'),
           onTap: () => showDialog(
               context: context,
               barrierDismissible: true,

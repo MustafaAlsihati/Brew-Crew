@@ -1,3 +1,4 @@
+import 'package:brew_crew/locale/app_localization.dart';
 import 'package:brew_crew/screens/auth/register.dart';
 import 'package:brew_crew/services/authservice.dart';
 import 'package:brew_crew/utils/dialogs.dart';
@@ -34,7 +35,7 @@ class _SignInState extends State<SignIn> {
         brightness: Brightness.dark,
         elevation: 0.0,
         centerTitle: true,
-        title: Text('Sign In to Brew Crew'),
+        title: Text(AppLocalizations.of(context).text('signInTitle')),
       ),
       body: GestureDetector(
         onTap: () => FocusScope.of(context).unfocus(),
@@ -42,7 +43,7 @@ class _SignInState extends State<SignIn> {
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(20),
             image: DecorationImage(
-              image: AssetImage('assets/coffee_bg.png'),
+              image: AssetImage('assets/coffee_bg.jpg'),
               fit: BoxFit.cover,
               colorFilter: ColorFilter.mode(
                   Colors.black.withOpacity(0.8), BlendMode.dstATop),
@@ -66,7 +67,7 @@ class _SignInState extends State<SignIn> {
                               r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
                           .hasMatch(val);
                       if (emailValid == false) {
-                        return 'Please enter your email address';
+                        return AppLocalizations.of(context).text('enterEmail');
                       }
                       return null;
                     },
@@ -74,9 +75,11 @@ class _SignInState extends State<SignIn> {
                         border: new OutlineInputBorder(
                           borderSide: new BorderSide(color: Colors.brown),
                         ),
-                        hintText: 'Email Address',
+                        hintText:
+                            AppLocalizations.of(context).text('emailHint'),
                         helperText: '',
-                        labelText: 'Email Address',
+                        labelText:
+                            AppLocalizations.of(context).text('emailHint'),
                         prefixIcon: const Icon(
                           Icons.person,
                           color: Colors.brown,
@@ -92,15 +95,18 @@ class _SignInState extends State<SignIn> {
                   ),
                   SizedBox(height: 5.0),
                   TextFormField(
-                    validator: (val) =>
-                        val.length < 6 ? 'Please enter your password' : null,
+                    validator: (val) => val.length < 6
+                        ? AppLocalizations.of(context).text('enterPassword')
+                        : null,
                     decoration: InputDecoration(
                         border: new OutlineInputBorder(
                           borderSide: new BorderSide(color: Colors.brown),
                         ),
-                        hintText: 'Password',
+                        hintText:
+                            AppLocalizations.of(context).text('passwordHint'),
                         helperText: '',
-                        labelText: 'Password',
+                        labelText:
+                            AppLocalizations.of(context).text('passwordHint'),
                         prefixIcon: const Icon(
                           Icons.vpn_key,
                           color: Colors.brown,
@@ -125,7 +131,7 @@ class _SignInState extends State<SignIn> {
                       ),
                       color: Colors.brown,
                       child: Text(
-                        'Sign In',
+                        AppLocalizations.of(context).text('signIn'),
                         style: TextStyle(
                           color: Colors.white,
                         ),
@@ -139,7 +145,9 @@ class _SignInState extends State<SignIn> {
                           Navigator.of(_scaffold.currentContext).pop();
                           if (result == null) {
                             errorDialog(
-                                context, 'Incorrect email address or password');
+                                context,
+                                AppLocalizations.of(context)
+                                    .text('loginError'));
                           }
                         }
                       },
@@ -151,11 +159,11 @@ class _SignInState extends State<SignIn> {
                       text: new TextSpan(
                         children: [
                           new TextSpan(
-                            text: "Don't have an account? ",
+                            text: AppLocalizations.of(context).text('signUp1'),
                             style: new TextStyle(color: Colors.black54),
                           ),
                           new TextSpan(
-                            text: 'Sign up',
+                            text: AppLocalizations.of(context).text('signUp2'),
                             style: new TextStyle(
                               color: Colors.blue,
                               decoration: TextDecoration.underline,

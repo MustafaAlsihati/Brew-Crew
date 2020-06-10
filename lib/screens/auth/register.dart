@@ -36,7 +36,7 @@ class _RegisterState extends State<Register> {
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(20),
             image: DecorationImage(
-              image: AssetImage('assets/coffee_bg.png'),
+              image: AssetImage('assets/coffee_bg.jpg'),
               fit: BoxFit.cover,
               colorFilter: ColorFilter.mode(
                   Colors.black.withOpacity(0.8), BlendMode.dstATop),
